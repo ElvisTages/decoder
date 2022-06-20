@@ -3,7 +3,7 @@ const express = require('express'),
 const bodyParser = require("body-parser");        
 const fs = require('fs');     
 const fileUpload = require('express-fileupload');
-
+const decoder = require("./parser.js")
   
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,6 +35,7 @@ const port = 80;
           }
         console.log(req.files.file);
         fs.writeFile(`${req.files.file.name}`, req.files.file.data, ()=>{})
+        decoder.Decoder(`${req.files.file.name}`)
         
     })
 
