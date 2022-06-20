@@ -12,9 +12,15 @@ document.getElementById("btn").addEventListener('click', async ()=>{
         method: 'POST',
         body: data
     });
-    let result = await response.text();
+    let result = await response.blob();
     console.log(result)
-    alert(result);
+    //alert(result);
+
+    let blob = new File(result, 'youRenamedIt.csv',{type:file.type});
+
+    document.getElementById("download").href = URL.createObjectURL(blob);
+
+    
     
 
 }else{
