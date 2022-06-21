@@ -34,11 +34,9 @@ const port = 80;
             return res.status(400).send("No files were uploaded.");
           }
         console.log(req.files.file);
-        fs.writeFile(`${req.files.file.name}`, req.files.file.data, ()=>{})
+        fs.writeFile(`${req.files.file.name}`, Buffer.from(req.files.file.data).toString("windows-1251"), ()=>{})
         decoder.Decoder(`${req.files.file.name}`)
-        res.setHeader("Content-Type", "multipart/form-data")
-        //res.sendFile(__dirname + `/${req.files.file.name}`)
-        fs.createReadStream(__dirname + `/${req.files.file.name}`).pipe(res);
+        
         
     })
 

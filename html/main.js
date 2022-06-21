@@ -16,9 +16,8 @@ document.getElementById("btn").addEventListener('click', async ()=>{
     console.log(result)
     //alert(result);
 
-    let blob = new File(result, 'youRenamedIt.csv',{type:file.type});
 
-    document.getElementById("download").href = URL.createObjectURL(blob);
+    document.getElementById("link").href = URL.createObjectURL(result);
 
     
     
